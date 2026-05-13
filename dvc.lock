@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  data_cleaning:
+    cmd: python src/data/data_cleaning.py
+    deps:
+    - path: data/raw/deliverytime.csv
+      hash: md5
+      md5: 67ab5f61913e9370c8b59c4aa0b187ab
+      size: 7170748
+    - path: src/data/data_cleaning.py
+      hash: md5
+      md5: d2f6b8b358816067d45a1c7854c2c5c4
+      size: 8508
+    outs:
+    - path: data/cleaned/delivery_cleaned.csv
+      hash: md5
+      md5: c631d3b0ae58d9f83d76257c93877933
+      size: 4603124
