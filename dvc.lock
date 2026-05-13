@@ -16,3 +16,27 @@ stages:
       hash: md5
       md5: c631d3b0ae58d9f83d76257c93877933
       size: 4603124
+  data_preparation:
+    cmd: python src/data/data_preparation.py
+    deps:
+    - path: data/cleaned/delivery_cleaned.csv
+      hash: md5
+      md5: c631d3b0ae58d9f83d76257c93877933
+      size: 4603124
+    - path: src/data/data_preparation.py
+      hash: md5
+      md5: 914791dea649b19c3d760f1c60b5ea05
+      size: 3014
+    params:
+      params.yaml:
+        data_preparation.random_state: 42
+        data_preparation.test_size: 0.2
+    outs:
+    - path: data/interim/test.csv
+      hash: md5
+      md5: 4c45b29bd47b12dec586c1b3476801e4
+      size: 921517
+    - path: data/interim/train.csv
+      hash: md5
+      md5: 707bee0fbebc36a32943667c8c56692a
+      size: 3678085
