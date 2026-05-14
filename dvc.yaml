@@ -27,3 +27,13 @@ stages:
     - data/processed/test_trans.csv
     - data/processed/train_trans.csv
     - models/preprocessor.joblib
+  model_training:
+    cmd: python src/model/model_train.py
+    deps:
+    - data/processed/train_trans.csv
+    - src/model/model_train.py
+    params:
+    - model_train.LightGBM
+    outs:
+    - models/model.joblib
+    - models/power_transformer.joblib
