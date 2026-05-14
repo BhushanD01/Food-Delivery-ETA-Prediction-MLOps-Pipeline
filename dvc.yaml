@@ -37,3 +37,12 @@ stages:
     outs:
     - models/model.joblib
     - models/power_transformer.joblib
+  model_evaluation:
+    cmd: python src/model/model_evaluation.py
+    deps:
+    - data/processed/test_trans.csv
+    - data/processed/train_trans.csv
+    - models/model.joblib
+    - src/model/model_evaluation.py
+    outs:
+    - run_information.json

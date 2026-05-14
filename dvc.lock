@@ -77,8 +77,8 @@ stages:
       size: 4844405
     - path: src/model/model_train.py
       hash: md5
-      md5: 9dcea527448d2e81971b0cf52136bae6
-      size: 4963
+      md5: 6e3d241cfeacc4f6efb54011315e974b
+      size: 3751
     params:
       params.yaml:
         model_train.LightGBM:
@@ -99,3 +99,27 @@ stages:
       hash: md5
       md5: 85fa6c812fb979005696bc149a988f84
       size: 805
+  model_evaluation:
+    cmd: python src/model/model_evaluation.py
+    deps:
+    - path: data/processed/test_trans.csv
+      hash: md5
+      md5: 4f913a952325e32012cfe53daea16ff6
+      size: 1211722
+    - path: data/processed/train_trans.csv
+      hash: md5
+      md5: bf4cba822f02a15a88924a6c7f24d653
+      size: 4844405
+    - path: models/model.joblib
+      hash: md5
+      md5: 054c61dda50294bfd602ba41d7577228
+      size: 465992
+    - path: src/model/model_evaluation.py
+      hash: md5
+      md5: 8bd3b318a46c4527da55832b9618f9e5
+      size: 5902
+    outs:
+    - path: run_information.json
+      hash: md5
+      md5: a3e849f14ffcd661c881520f4fa819f5
+      size: 220
