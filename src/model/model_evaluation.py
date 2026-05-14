@@ -55,10 +55,10 @@ def load_model(model_path: Path):
     return model
 
 
-def save_model_info(save_json_path,run_id, artifact_path, model_name):
+def save_model_info(save_json_path,run_id, name, model_name):
     info_dict = {
         "run_id": run_id,
-        "artifact_path": artifact_path,
+        "artifact_path": name,
         "model_name": model_name
     }
     with open(save_json_path,"w") as f:
@@ -150,7 +150,7 @@ if __name__ == "__main__":
                                     model_output=model.predict(X_train.sample(20,random_state=42)))
         
         # log the final model
-        mlflow.sklearn.log_model(model,"delivery_time_pred_model",signature=model_signature)
+        model_info = mlflow.sklearn.log_model(model,"delivery_time_pred_model",signature=model_signature)
         
         # log the power transformer
         mlflow.log_artifact(root_path / "models" / "power_transformer.joblib")
@@ -159,7 +159,8 @@ if __name__ == "__main__":
         mlflow.log_artifact(root_path / "models" / "preprocessor.joblib")
         
         # get the current run artifact uri
-        artifact_uri = mlflow.get_artifact_uri()
+        # artifact_uri = mlflow.get_artifact_uri()
+        actual_model_uri = model_info.model_uri
         
         logger.info("Mlflow logging complete and model logged")
         
@@ -171,7 +172,7 @@ if __name__ == "__main__":
     save_json_path = root_path / "run_information.json"
     save_model_info(save_json_path=save_json_path,
                     run_id=run_id,
-                    artifact_path=artifact_uri,
+                    name=actual_model_uri,
                     model_name=model_name)
     logger.info("Model Information saved")
     
