@@ -1,6 +1,6 @@
 data_preparation:
- test_size: 0.4
- random_state: 42
+ test_size: 0.3
+ random_state: 21
 
 model_train:
  LightGBM:
