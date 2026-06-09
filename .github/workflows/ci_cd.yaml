@@ -30,6 +30,7 @@ jobs:
         dvc pull data/raw/deliverytime.csv --force
         dvc pull data/interim/test.csv --force
         dvc pull models/preprocessor.joblib --force
+        dvc pull run_information.json --force
 
      - name: Test Performance
        env:

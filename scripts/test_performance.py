@@ -27,8 +27,11 @@ def load_transformer(transformer_path):
     transformer = joblib.load(transformer_path)
     return transformer
 
+root_path = Path(__file__).resolve().parent.parent
+run_info_path = root_path / "run_information.json"
+
 # set model name
-model_name = load_model_information("run_information.json")["model_name"]
+model_name = load_model_information(run_info_path)["model_name"]
 stage = "staging"
 
 # load the model
