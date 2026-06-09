@@ -25,9 +25,11 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
         aws-region: ap-south-1
 
-     - name: DVC Pull
+     - name: Pull Data and Artifacts via DVC
        run: |
-        dvc pull data/raw/deliverytime.csv
+        dvc pull data/raw/deliverytime.csv --force
+        dvc pull data/interim/test.csv --force
+        dvc pull models/preprocessor.joblib --force
 
      - name: Test Performance
        env:
