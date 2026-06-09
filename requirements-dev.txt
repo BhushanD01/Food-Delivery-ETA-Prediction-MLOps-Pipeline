@@ -6,3 +6,4 @@ dvc
 mlflow
 dagshub
 joblib
+dvc-s3
