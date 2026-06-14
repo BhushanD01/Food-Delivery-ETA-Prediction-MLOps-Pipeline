@@ -60,7 +60,7 @@ if __name__ == "__main__":
             stage="Staging",
             archive_existing_versions=True
         )
-        client.set_registered_model_alias(model_name, "production", model_version.version)
+        client.set_registered_model_alias(model_name, "Staging", model_version.version)
         logger.info(f"Successfully registered {model_name} version {model_version.version}")
     except Exception as e:
         print(f"Registration failed: {e}")
